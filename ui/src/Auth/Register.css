@@ -1,0 +1,77 @@
+.registerMain {
+    margin-left: 50%;
+    width: 100%;
+}
+
+.registerFields {
+    margin-top: 30px;
+    width: 40%;
+}
+
+.emailText {
+    margin-bottom: 10px;
+    font-size: 20px;
+}
+
+.registerFieldsGroup {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px
+}
+
+.registerInput {
+    background: #FFFFFF;
+    border: 2px solid #1E8BC3;
+    border-radius: 10px;
+    height: 25px;
+}
+
+.passwordText {
+    margin-bottom: 10px;
+    font-size: 20px;
+}
+
+.registerButton {
+	background-color:rgba(30, 139, 195, 1);
+	border-radius:28px;
+	border:1px solid rgba(30, 139, 195, 1);
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-size:17px;
+    padding: 7px 40px;
+	text-decoration:none;
+    grid-column-start: 1;
+    grid-column-end: 3;
+}
+.registerButton:hover {
+	background-color:#3a7fbe;
+}
+.registerButton:active {
+	position:relative;
+	top:1px;
+}
+
+.registerMainForm {
+    height:fit-content;
+    margin: 20px auto;
+    width: 40%;
+    grid-column-start: 1;
+    grid-column-end: 3;
+
+    border-radius: 20px;
+    background-color: #fff;
+    padding: 25px;
+    box-shadow: 4px 2px 20px 0 #00000026;
+
+}
+
+.rButton{
+    display: flex;
+    justify-content: space-around;
+}
+
+.registerMainInner {
+    display: flex;
+    justify-content: space-around;
+}
