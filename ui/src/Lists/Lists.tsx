@@ -4,6 +4,7 @@ import LeftMenu from "../components/LeftMenu/LeftMenu";
 import {Checkbox, FormControlLabel, FormGroup} from "@mui/material";
 import {AddCircle, Star, StarBorder} from "@mui/icons-material";
 import './Lists.css'
+import {MenuItems} from "../utils/constants";
 
 export default class ListsPage extends React.Component {
     render() {
@@ -12,7 +13,7 @@ export default class ListsPage extends React.Component {
                 <Header pageTitle='Lists'
                         rightPartText=''
                         rightPartUrl=''/>
-                <LeftMenu/>
+                <LeftMenu items={MenuItems}/>
                 <div className="main">
                     <div className="mainTitle">Shared Lists</div>
                     <div className="mainBody">
@@ -30,10 +31,12 @@ export default class ListsPage extends React.Component {
                                     <FormControlLabel control={<Checkbox defaultChecked/>} label="Milk"/>
                                     <FormControlLabel control={<Checkbox/>} label="Coca-cola"/>
                                     <FormControlLabel control={<Checkbox/>} label="Sweets"/>
-                                    <FormControlLabel control={<Checkbox/>} label="Apples"/><FormControlLabel control={<Checkbox defaultChecked/>} label="Milk"/>
+                                    <FormControlLabel control={<Checkbox/>} label="Apples"/><FormControlLabel
+                                    control={<Checkbox defaultChecked/>} label="Milk"/>
                                     <FormControlLabel control={<Checkbox/>} label="Coca-cola"/>
                                     <FormControlLabel control={<Checkbox/>} label="Sweets"/>
-                                    <FormControlLabel control={<Checkbox/>} label="Apples"/><FormControlLabel control={<Checkbox defaultChecked/>} label="Milk"/>
+                                    <FormControlLabel control={<Checkbox/>} label="Apples"/><FormControlLabel
+                                    control={<Checkbox defaultChecked/>} label="Milk"/>
                                     <FormControlLabel control={<Checkbox/>} label="Coca-cola"/>
                                     <FormControlLabel control={<Checkbox/>} label="Sweets"/>
                                     <FormControlLabel control={<Checkbox/>} label="Apples"/>
@@ -98,7 +101,7 @@ export default class ListsPage extends React.Component {
                             <div className="cardBody">
                                 Add new list
                                 <div className="addNewIcon">
-                                    <AddCircle sx={{ fontSize: 96 }}/>
+                                    <AddCircle sx={{fontSize: 96}}/>
                                 </div>
                             </div>
                         </div>
