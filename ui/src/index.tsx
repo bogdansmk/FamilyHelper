@@ -5,6 +5,7 @@ import reportWebVitals from './reportWebVitals';
 import {Route, BrowserRouter, Routes} from 'react-router-dom';
 import LoginPage from './Auth/Login';
 import RegistrationPage from './Auth/Register';
+import ListsPage from "./Lists/Lists";
 
 const root = ReactDOM.createRoot(
     document.getElementById('root') as HTMLElement
@@ -15,6 +16,7 @@ root.render(
             <Routes>
                 <Route path="/" element={<LoginPage/>}/>
                 <Route path="Register" element={<RegistrationPage/>}/>
+                <Route path="Lists" element={<ListsPage/>}/>
             </Routes>
         </BrowserRouter>
     </React.StrictMode>
