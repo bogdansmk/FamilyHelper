@@ -7,7 +7,9 @@ export default class ListsPage extends React.Component {
     render() {
         return (
             <>
-                <Header/>
+                <Header pageTitle='Lists'
+                        rightPartText=''
+                        rightPartUrl=''/>
                 <LeftMenu/>
             </>
         );
