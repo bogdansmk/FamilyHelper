@@ -108,11 +108,11 @@ export default class RegistrationPage extends React.Component<IRegistrationProps
                                 {this.renderPasswordInput()}
                             </div>
                             <div className='registerFieldsGroup'>
-                                <span className='passwordText'>Password</span>
+                                <span className='passwordText'> Repeat Password</span>
                                 {this.renderSecondPasswordInput()}
                             </div>
                             <div className='registerFieldsGroup'>
-                                <span className='passwordText'>Password</span>
+                                <span className='passwordText'>Name</span>
                                 {this.renderNameInput()}
                             </div>
                             <div className='rButton'>
