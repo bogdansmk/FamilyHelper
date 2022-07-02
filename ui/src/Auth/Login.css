@@ -1,4 +1,6 @@
-.main {
-    margin-left: 440px;
+.loginMain {
+    margin: 20px auto;
     width: 60%;
+    grid-column-start: 1;
+    grid-column-end: 3;
 }

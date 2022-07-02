@@ -15,7 +15,7 @@ class LoginPage extends React.Component<ILoginProps, any> {
                     rightPartText='Create Account'
                     rightPartUrl='/Register'
                 />
-                <div className="main">
+                <div className="main loginMain">
                     <span>login page</span>
                     <p>
                         <Link to="/Register">Register</Link>

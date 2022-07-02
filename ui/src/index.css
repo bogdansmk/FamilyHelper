@@ -16,7 +16,7 @@ code {
 #root {
   display: grid;
   grid-template-rows: 100px 1fr;
-  /*grid-template-columns: 100px 1fr;*/
+  grid-template-columns: 100px 1fr;
   height: 100vh;
 }
 
