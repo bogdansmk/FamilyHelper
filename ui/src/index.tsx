@@ -5,24 +5,18 @@ import reportWebVitals from './reportWebVitals';
 import {Route, BrowserRouter, Routes} from 'react-router-dom';
 import LoginPage from './Auth/Login';
 import RegistrationPage from './Auth/Register';
-import Header from "./components/Header/Header";
-import LeftMenu from "./components/LeftMenu/LeftMenu";
 
 const root = ReactDOM.createRoot(
     document.getElementById('root') as HTMLElement
 );
 root.render(
     <React.StrictMode>
-        <Header/>
-        <LeftMenu/>
-        <main className="main">
-            <BrowserRouter>
-                <Routes>
-                    <Route path="/" element={<LoginPage/>}/>
-                    <Route path="Register" element={<RegistrationPage/>}/>
-                </Routes>
-            </BrowserRouter>
-        </main>
+        <BrowserRouter>
+            <Routes>
+                <Route path="/" element={<LoginPage/>}/>
+                <Route path="Register" element={<RegistrationPage/>}/>
+            </Routes>
+        </BrowserRouter>
     </React.StrictMode>
 );
 

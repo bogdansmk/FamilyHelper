@@ -1,5 +1,6 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import {Link} from 'react-router-dom';
+import Header from "../components/Header/Header";
 
 interface ILoginProps {
 }
@@ -7,13 +8,17 @@ interface ILoginProps {
 class LoginPage extends React.Component<ILoginProps, any> {
     render() {
         return (
-            <div>
-                <span>login page</span>
-                <p>
-                    <Link to="/Register">Register</Link>
-                </p>
-            </div>
+            <>
+                <Header/>
+                <div className="main">
+                    <span>login page</span>
+                    <p>
+                        <Link to="/Register">Register</Link>
+                    </p>
+                </div>
+            </>
         );
     }
 }
+
 export default LoginPage;
