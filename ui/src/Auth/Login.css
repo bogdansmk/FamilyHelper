@@ -7,6 +7,28 @@
     font-size: 20px;
 }
 
+.loginRightPartInner {
+    display: flex;
+    flex-direction: column;
+    margin-top: 60%
+}
+
+.loginRightPart {
+    margin-right: 10%;
+}
+
+.emailText {
+    font-size: 20px;
+}
+
+.loginLeftPart {
+    margin-left: 5%;
+}
+
+.emaiLoginText {
+    margin-bottom: 5%;
+}
+
 .loginFields {
     margin-top: 30px;
 }
@@ -35,26 +57,28 @@
 }
 
 .loginButton {
-	background-color:rgba(30, 139, 195, 1);
-	border-radius:28px;
-	border:1px solid rgba(30, 139, 195, 1);
-	display:inline-block;
-	cursor:pointer;
-	color:#ffffff;
-	font-size:17px;
+    background-color: rgba(30, 139, 195, 1);
+    border-radius: 28px;
+    border: 1px solid rgba(30, 139, 195, 1);
+    display: inline-block;
+    cursor: pointer;
+    color: #ffffff;
+    font-size: 17px;
     padding: 7px 40px;
-	text-decoration:none;
+    text-decoration: none;
 }
+
 .loginButton:hover {
-	background-color:#3a7fbe;
+    background-color: #3a7fbe;
 }
+
 .loginButton:active {
-	position:relative;
-	top:1px;
+    position: relative;
+    top: 1px;
 }
 
 .loginMainForm {
-    height:fit-content;
+    height: fit-content;
     margin: 20px auto;
     width: 60%;
     grid-column-start: 1;
@@ -67,6 +91,14 @@
 
 }
 
+.vertical {
+    border-left: 3px solid rgba(217, 217, 217, 1);
+    height: 300px;
+    position: absolute;
+    left: 50%;
+}
+
 .loginMainInner {
     display: flex;
+    justify-content: space-between;
 }

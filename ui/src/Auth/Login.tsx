@@ -94,8 +94,20 @@ export default class LoginPage extends React.Component<ILoginPageState, ILoginPa
                                 text={"Enter"}
                             />
                         </div>
+                        <div className='loginMiddlePart'>
+                            <div className="vertical"></div>
+                        </div>
                         <div className='loginRightPart'>
-
+                            <div className='loginRightPartInner'>
+                                <span className='emaiLoginText'>Sign in through a Gmail.</span>
+                                <SimpleButton
+                                    type="submit"
+                                    className="loginButton"
+                                    disabled={false}
+                                    onClick={this.submit}
+                                    text={"Gmail"}
+                                />
+                            </div>
                         </div>
                     </div>
                 </div>
