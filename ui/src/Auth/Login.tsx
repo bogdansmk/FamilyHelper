@@ -73,7 +73,7 @@ export default class LoginPage extends React.Component<ILoginPageState, ILoginPa
                     rightPartUrl='/Register'
                 />
                 <div className="loginMainForm">
-                    <div className='loginMain'>
+                    <div className='loginMainInner'>
                         <div className='loginLeftPart'>
                             {this.renderInfoText()}
                             <div className='loginFields'>
