@@ -1,8 +1,6 @@
 using FamilyHelper.Persistence;
 using FamilyHelper.Persistence.Entities;
 using FamilyHelper.Persistence.Mapping;
-using Microsoft.AspNetCore.Authentication;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
@@ -17,9 +15,9 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddAutoMapper(typeof(DataProfile).Assembly);
 
 builder.Services.AddDbContext<AppDbContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("FamilyHelperDB")));
+    options.UseSqlServer(builder.Configuration.GetConnectionString("LocalDB")));
 
-builder.Services.AddIdentity<AppUser, IdentityRole>()
+builder.Services.AddIdentity<AppUser, IdentityRole<Guid>>()
                 .AddEntityFrameworkStores<AppDbContext>();
 
 var app = builder.Build();
