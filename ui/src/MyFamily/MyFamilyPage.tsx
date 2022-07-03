@@ -6,6 +6,7 @@ import './MyFamilyPage.css'
 import {FHTab, FHTabPanel, FHTabs} from "../components/Tabs/Tabs";
 import AddNewMemberDialog from "./AddNewMemberDialog/AddNewMemberDialog";
 import UserCard, {IUser} from "./UserCard/UserCard";
+import map from '../assets/map.png'
 
 interface IMyFamilyState {
     activeTab: string
@@ -33,9 +34,7 @@ export default class MyFamilyPage extends React.Component {
                     <FHTabPanel value={'posts'} index={this.state.activeTab}>
                         Posts
                     </FHTabPanel>
-                    <FHTabPanel value={'map'} index={this.state.activeTab}>
-                        Map
-                    </FHTabPanel>
+                    <FHTabPanel className="mapTabPanel" value={'map'} index={this.state.activeTab}/>
                 </div>
                 <div className="ourFamily">
                     <div className="ourFamilyTitle">Our family</div>

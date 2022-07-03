@@ -1,5 +1,13 @@
 .myFamilyMain {
     grid-column-end: 3;
+    overflow: hidden;
+}
+
+.mapTabPanel {
+    height: 100%;
+    background: url('../assets/map.svg') no-repeat;
+    background-size: cover;
+    background-position: bottom;
 }
 
 .ourFamily {

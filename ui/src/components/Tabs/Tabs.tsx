@@ -16,6 +16,7 @@ interface FHTabProps {
 }
 
 interface FHTabPanelProps {
+    className?: string
     children?: React.ReactNode;
     index?: string;
     value?: string;
@@ -47,11 +48,11 @@ export const FHTab = styled((props: FHTabProps) => <Tab disableRipple {...props}
 );
 
 export const FHTabPanel = (props: FHTabPanelProps) => {
-    const {children, value, index, ...other} = props;
+    const {children, className, value, index, ...other} = props;
 
     return (
         <div
-            className="fhTabPanel"
+            className={["fhTabPanel", className].join(' ')}
             id={`tabpanel-${index}`}
             role="tabpanel"
             hidden={value !== index}
