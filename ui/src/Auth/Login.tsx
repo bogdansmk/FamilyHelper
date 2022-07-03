@@ -66,6 +66,10 @@ export default class LoginPage extends React.Component<ILoginPageState, ILoginPa
         this.setState(state => ({ authSuccess: true }));
     };
 
+    submitEmailAuth = () => {
+        alert("Email authorization isn`t implemented yet.");
+    }
+
     submit = () => {
         if (this.state.email && this.state.password) {
             fetch('/api', {
@@ -133,7 +137,7 @@ export default class LoginPage extends React.Component<ILoginPageState, ILoginPa
                                     type="submit"
                                     className="loginButton"
                                     disabled={false}
-                                    onClick={this.submit}
+                                    onClick={this.submitEmailAuth}
                                     text={"Gmail"}
                                 />
                             </div>
