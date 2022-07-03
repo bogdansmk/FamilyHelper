@@ -117,10 +117,6 @@ export default class RegistrationPage extends React.Component<IRegistrationProps
         else {
             alert("Please fill all fields to continue registration")
         }
-        console.log(this.state?.email)
-        console.log(this.state?.password)
-        console.log(this.state?.secondPassword)
-        console.log(this.state?.name)
     }
 
     render() {
