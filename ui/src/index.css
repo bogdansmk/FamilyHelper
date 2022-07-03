@@ -41,7 +41,7 @@ code {
   width: 100%;
   top: 0;
   left: 0;
-  z-index: 9999;
+  z-index: 2;
   padding: 20px 25px 10px 25px;
 }
 
