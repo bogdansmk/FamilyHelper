@@ -6,6 +6,7 @@ import { Route, BrowserRouter, Routes } from 'react-router-dom';
 import LoginPage from './Auth/Login';
 import RegistrationPage from './Auth/Register';
 import ListsPage from "./Lists/Lists";
+import MyFamilyPage from "./MyFamily/MyFamilyPage";
 
 const root = ReactDOM.createRoot(
     document.getElementById('root') as HTMLElement
@@ -15,8 +16,9 @@ root.render(
         <BrowserRouter>
             <Routes>
                 <Route path="/" element={<LoginPage />} />
-                <Route path="Register" element={<RegistrationPage />} />
-                <Route path="Lists" element={<ListsPage />} />
+                <Route path="register" element={<RegistrationPage />} />
+                <Route path="my-family" element={<MyFamilyPage />} />
+                <Route path="lists" element={<ListsPage />} />
             </Routes>
         </BrowserRouter>
     </React.StrictMode>
