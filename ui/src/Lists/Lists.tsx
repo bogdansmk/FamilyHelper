@@ -58,7 +58,7 @@ export default class ListsPage extends React.Component<IListsPage> {
                     rightPartUrl=''
                     authorized={true}
                 />
-                <LeftMenu items={MenuItems} />
+                <LeftMenu items={MenuItems} activeItemId={2}/>
                 <div className="main">
                     <div className="mainTitle">Shared Lists</div>
                     <div className="mainBody">
