@@ -1,4 +1,5 @@
 import React from 'react';
+import { Navigate } from 'react-router-dom';
 import SimpleButton from '../components/Buttons/SimpleButton';
 import Header from "../components/Header/Header";
 import "./Login.css";
@@ -7,6 +8,7 @@ import "./Login.css";
 interface ILoginPageState {
     email?: string;
     password?: string;
+    authSuccess?: boolean;
 }
 
 interface ILoginPageProps {
@@ -17,6 +19,7 @@ export default class LoginPage extends React.Component<ILoginPageState, ILoginPa
     state: ILoginPageState = {
         email: '',
         password: '',
+        authSuccess: false,
     }
 
     renderInfoText() {
@@ -59,9 +62,35 @@ export default class LoginPage extends React.Component<ILoginPageState, ILoginPa
         )
     }
 
+    setAuthorized = () => {
+        this.setState(state => ({ authSuccess: true }));
+    };
+
     submit = () => {
-        console.log(this.state?.email)
-        console.log(this.state?.password)
+        if (this.state.email && this.state.password) {
+            fetch('/api', {
+                method: 'POST',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ email: this.state.email, password: this.state.password })
+            }).then(
+                res => res.json())
+                .then(
+                    (result) => {
+                        if (result.status === 200) {
+                            this.setAuthorized();
+                        }
+                        else {
+                            alert("Я без понятия по какой причине Витя отправил на клиент не 200 статус, но ты не будешь авторизован.")
+                        }
+                    }
+                )
+        }
+        else {
+            alert("Please fill all fields to authorize")
+        }
     }
 
     render() {
@@ -110,6 +139,7 @@ export default class LoginPage extends React.Component<ILoginPageState, ILoginPa
                             </div>
                         </div>
                     </div>
+                    {this.state.authSuccess && (<Navigate to="/Lists" replace={true} state />)}
                 </div>
             </>
         );
