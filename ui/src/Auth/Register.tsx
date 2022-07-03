@@ -1,7 +1,9 @@
 import React from 'react';
+import { Navigate } from 'react-router-dom';
 import SimpleButton from '../components/Buttons/SimpleButton';
 import Header from '../components/Header/Header';
-import "./Register.css"
+import UserReg from '../Models/UserReg';
+import "./Register.css";
 
 interface IRegistrationProps {
 }
@@ -11,6 +13,7 @@ interface IRegisterPageState {
     password?: string;
     secondPassword?: string;
     name?: string;
+    registraionSuccess?: boolean;
 }
 
 export default class RegistrationPage extends React.Component<IRegistrationProps, IRegisterPageState> {
@@ -19,6 +22,7 @@ export default class RegistrationPage extends React.Component<IRegistrationProps
         password: '',
         secondPassword: '',
         name: '',
+        registraionSuccess: false,
     }
 
     renderEmailInput() {
@@ -31,6 +35,10 @@ export default class RegistrationPage extends React.Component<IRegistrationProps
             />
         )
     }
+
+    setAuthorized = () => {
+        this.setState(state => ({ registraionSuccess: true }));
+    };
 
     onEmailChange = (e: { target: { value: any; }; }) => {
         this.setState(state => ({ email: e.target.value }));
@@ -82,6 +90,33 @@ export default class RegistrationPage extends React.Component<IRegistrationProps
     };
 
     submit = () => {
+        if (this.state.password !== this.state.secondPassword) {
+            alert("Passwords are not match")
+        }
+        else if (this.state.email && this.state.password && this.state.secondPassword && this.state.name) {
+            const user = new UserReg(this.state.email, this.state.password, this.state.name);
+            fetch('/api', {
+                method: 'POST',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ user })
+            }).then(res => res.json())
+                .then(
+                    (result) => {
+                        if (result.status === 200) {
+                            this.setAuthorized();
+                        }
+                        else {
+                            alert("Я без понятия по какой причине Витя отправил на клиент не 200 статус, но ты не будешь зарегестрирован.")
+                        }
+                    }
+                )
+        }
+        else {
+            alert("Please fill all fields to continue registration")
+        }
         console.log(this.state?.email)
         console.log(this.state?.password)
         console.log(this.state?.secondPassword)
@@ -126,6 +161,7 @@ export default class RegistrationPage extends React.Component<IRegistrationProps
                             </div>
                         </div>
                     </div>
+                    {this.state.registraionSuccess && (<Navigate to="/Lists" replace={true} state />)}
                 </div>
             </>
         );
