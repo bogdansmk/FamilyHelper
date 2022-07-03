@@ -1,9 +1,9 @@
 import React from 'react';
 import { Navigate } from 'react-router-dom';
-import SimpleButton from '../components/Buttons/SimpleButton';
 import Header from '../components/Header/Header';
 import UserReg from '../Models/UserReg';
 import "./Register.css";
+import {Button, TextField} from "@mui/material";
 
 interface IRegistrationProps {
 }
@@ -27,8 +27,11 @@ export default class RegistrationPage extends React.Component<IRegistrationProps
 
     renderEmailInput() {
         return (
-            <input
+            <TextField
                 className='registerInput'
+                variant="outlined"
+                fullWidth
+                size="small"
                 onChange={this.onEmailChange}
                 value={this.state.email}
             />
@@ -45,8 +48,12 @@ export default class RegistrationPage extends React.Component<IRegistrationProps
 
     renderPasswordInput() {
         return (
-            <input
+            <TextField
                 className='registerInput'
+                variant="outlined"
+                fullWidth
+                size="small"
+                type="password"
                 onChange={this.onPasswordChange}
                 value={this.state.password}
             />
@@ -59,8 +66,12 @@ export default class RegistrationPage extends React.Component<IRegistrationProps
 
     renderSecondPasswordInput() {
         return (
-            <input
+            <TextField
                 className='registerInput'
+                variant="outlined"
+                fullWidth
+                size="small"
+                type="password"
                 onChange={this.onSecondPasswordChange}
                 value={this.state.secondPassword}
             />
@@ -73,8 +84,11 @@ export default class RegistrationPage extends React.Component<IRegistrationProps
 
     renderNameInput() {
         return (
-            <input
+            <TextField
                 className='registerInput'
+                variant="outlined"
+                fullWidth
+                size="small"
                 onChange={this.onNameChange}
                 value={this.state.name}
             />
@@ -149,13 +163,17 @@ export default class RegistrationPage extends React.Component<IRegistrationProps
                                 {this.renderNameInput()}
                             </div>
                             <div className='rButton'>
-                                <SimpleButton
+                                <Button
                                     type="submit"
                                     className="registerButton"
+                                    variant="contained"
+                                    disableElevation
                                     disabled={false}
                                     onClick={this.submit}
-                                    text={"Register"}
-                                />
+                                    style={{minWidth: 125}}
+                                >
+                                    Register
+                                </Button>
                             </div>
                         </div>
                     </div>

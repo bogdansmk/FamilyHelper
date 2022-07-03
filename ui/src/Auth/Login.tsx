@@ -1,8 +1,8 @@
 import React from 'react';
 import { Navigate } from 'react-router-dom';
-import SimpleButton from '../components/Buttons/SimpleButton';
 import Header from "../components/Header/Header";
 import "./Login.css";
+import {Button, TextField} from "@mui/material";
 
 
 interface ILoginPageState {
@@ -42,20 +42,27 @@ export default class LoginPage extends React.Component<ILoginPageState, ILoginPa
 
     renderEmailInput() {
         return (
-            <input
-                className='loginInput'
-                onChange={this.onEmailChange}
+            <TextField
+                className="loginInput"
+                variant="outlined"
+                fullWidth
+                size="small"
                 value={this.state.email}
+                onChange={this.onEmailChange}
             />
         )
     }
 
     renderPasswordInput() {
         return (
-            <input
-                className='loginInput'
-                onChange={this.onPasswordChange}
+            <TextField
+                className="loginInput"
+                variant="outlined"
+                fullWidth
+                size="small"
+                type="password"
                 value={this.state.password}
+                onChange={this.onPasswordChange}
             />
         )
     }
@@ -116,13 +123,17 @@ export default class LoginPage extends React.Component<ILoginPageState, ILoginPa
                                     {this.renderPasswordInput()}
                                 </div>
                             </div>
-                            <SimpleButton
+                            <Button
                                 type="submit"
                                 className="loginButton"
+                                variant="contained"
+                                disableElevation
                                 disabled={false}
                                 onClick={this.submit}
-                                text={"Enter"}
-                            />
+                                style={{minWidth: 125}}
+                            >
+                                Enter
+                            </Button>
                         </div>
                         <div className='loginMiddlePart'>
                             <div className="vertical"></div>
@@ -130,13 +141,16 @@ export default class LoginPage extends React.Component<ILoginPageState, ILoginPa
                         <div className='loginRightPart'>
                             <div className='loginRightPartInner'>
                                 <span className='emaiLoginText'>Sign in through a Gmail.</span>
-                                <SimpleButton
+                                <Button
                                     type="submit"
                                     className="loginButton"
+                                    variant="contained"
+                                    disableElevation
                                     disabled={false}
                                     onClick={this.submitEmailAuth}
-                                    text={"Gmail"}
-                                />
+                                >
+                                    Gmail
+                                </Button>
                             </div>
                         </div>
                     </div>
