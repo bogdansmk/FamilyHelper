@@ -36,7 +36,7 @@ export default class ListsPage extends React.Component<IListsPage> {
                 'Content-Type': 'application/json'
             }
         }).then(res => res.json())
-            .then(result => this.setState({ beers: result }))
+            .then(result => this.setState({ lists: result }))
     }
 
 
