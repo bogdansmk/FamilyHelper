@@ -24,7 +24,7 @@ export default class MyFamilyPage extends React.Component {
     render() {
         return (
             <>
-                <Header pageTitle={'My family'} rightPartText={''} rightPartUrl={''}/>
+                <Header pageTitle={'My family'} authorized={true}/>
                 <LeftMenu items={MenuItems} activeItemId={0}/>
                 <div className="main myFamilyMain">
                     <FHTabs value={this.state.activeTab} onChange={this.handleTabSwitch}>
