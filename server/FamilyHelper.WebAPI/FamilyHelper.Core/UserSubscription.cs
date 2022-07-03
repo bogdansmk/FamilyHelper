@@ -1,14 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace FamilyHelper.Core
+﻿namespace FamilyHelper.Core
 {
     public class UserSubscription
     {
-        public Guid UserSubscriptonId { get; set; }
+        public Guid UserSubscriptonId { get; set; } = Guid.NewGuid();
         public DateTime PurchaseDate { get; set; }
         public DateTime ExpireDate { get; set; }
 
@@ -16,5 +10,6 @@ namespace FamilyHelper.Core
         public SubscriptionPlan SubscriptionPlan { get; set; }
 
         public Guid UserId { get; set; }
+        public User User { get; set; }
     }
 }

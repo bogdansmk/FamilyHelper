@@ -26,11 +26,9 @@ namespace FamilyHelper.Persistence
             {
                 u.ToTable("Users");
                 u.HasKey(u => u.Id);
+                u.Property(u => u.FamilyId).HasColumnName("FamilyId");
                 u.Property(u => u.Email).HasColumnName("Email");
                 u.Property(u => u.UserName).HasColumnName("UserName");
-                u.Property(u => u.UserSubscriptionId).HasColumnName("UserSubscriptionId");
-                u.Property(u => u.UserInfoId).HasColumnName("UserInfoId");
-                u.Property(u => u.GeolocationId).HasColumnName("GeolocationId");
                 u.Property(u => u.PasswordHash).HasColumnName("PasswordHash");
             });
 
@@ -38,11 +36,9 @@ namespace FamilyHelper.Persistence
             {
                 u.ToTable("Users");
                 u.HasKey(u => u.Id);
+                u.Property(u => u.FamilyId).HasColumnName("FamilyId");
                 u.Property(u => u.Email).HasColumnName("Email");
                 u.Property(u => u.UserName).HasColumnName("UserName");
-                u.Property(u => u.UserSubscriptionId).HasColumnName("UserSubscriptionId");
-                u.Property(u => u.UserInfoId).HasColumnName("UserInfoId");
-                u.Property(u => u.GeolocationId).HasColumnName("GeolocationId");
                 u.Property(u => u.PasswordHash).HasColumnName("PasswordHash");
             });
 
@@ -90,18 +86,26 @@ namespace FamilyHelper.Persistence
 
             modelBuilder.Entity<User>()
                 .HasOne(u => u.Geolocation)
-                .WithOne()
-                .HasForeignKey<Geolocation>(g => g.UserId);
+                .WithOne(g => g.User)
+                .HasForeignKey<Geolocation>(g => g.UserId)
+                .OnDelete(DeleteBehavior.NoAction);
 
             modelBuilder.Entity<User>()
                 .HasOne(u => u.UserSubscription)
-                .WithOne()
-                .HasForeignKey<UserSubscription>(us => us.UserId);
+                .WithOne(us => us.User)
+                .HasForeignKey<UserSubscription>(us => us.UserId)
+                .OnDelete(DeleteBehavior.NoAction);
 
             modelBuilder.Entity<User>()
                 .HasOne(u => u.UserInfo)
+                .WithOne(ui => ui.User)
+                .HasForeignKey<UserInfo>(ui => ui.UserId)
+                .OnDelete(DeleteBehavior.NoAction);
+
+            modelBuilder.Entity<Family>()
+                .HasMany(f => f.Members)
                 .WithOne()
-                .HasForeignKey<UserInfo>(ui => ui.UserId);
+                .HasForeignKey(u => u.FamilyId);
 
             modelBuilder.Entity<Family>()
                 .HasMany(f => f.FamilyLists)

@@ -183,12 +183,9 @@ namespace FamilyHelper.Persistence.Migrations
                         .HasColumnName("Email");
 
                     b.Property<Guid?>("FamilyId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid>("GeolocationId")
                         .ValueGeneratedOnUpdateSometimes()
                         .HasColumnType("uniqueidentifier")
-                        .HasColumnName("GeolocationId");
+                        .HasColumnName("FamilyId");
 
                     b.Property<string>("PasswordHash")
                         .IsRequired()
@@ -196,21 +193,11 @@ namespace FamilyHelper.Persistence.Migrations
                         .HasColumnType("nvarchar(max)")
                         .HasColumnName("PasswordHash");
 
-                    b.Property<Guid>("UserInfoId")
-                        .ValueGeneratedOnUpdateSometimes()
-                        .HasColumnType("uniqueidentifier")
-                        .HasColumnName("UserInfoId");
-
                     b.Property<string>("UserName")
                         .IsRequired()
                         .ValueGeneratedOnUpdateSometimes()
                         .HasColumnType("nvarchar(max)")
                         .HasColumnName("UserName");
-
-                    b.Property<Guid>("UserSubscriptionId")
-                        .ValueGeneratedOnUpdateSometimes()
-                        .HasColumnType("uniqueidentifier")
-                        .HasColumnName("UserSubscriptionId");
 
                     b.HasKey("Id");
 
@@ -226,7 +213,6 @@ namespace FamilyHelper.Persistence.Migrations
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Avatar")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("BirthDate")
@@ -237,15 +223,12 @@ namespace FamilyHelper.Persistence.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("LastName")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Status")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Tag")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<Guid>("UserId")
@@ -309,10 +292,10 @@ namespace FamilyHelper.Persistence.Migrations
                     b.Property<bool>("EmailConfirmed")
                         .HasColumnType("bit");
 
-                    b.Property<Guid>("GeolocationId")
+                    b.Property<Guid?>("FamilyId")
                         .ValueGeneratedOnUpdateSometimes()
                         .HasColumnType("uniqueidentifier")
-                        .HasColumnName("GeolocationId");
+                        .HasColumnName("FamilyId");
 
                     b.Property<bool>("LockoutEnabled")
                         .HasColumnType("bit");
@@ -345,25 +328,13 @@ namespace FamilyHelper.Persistence.Migrations
                     b.Property<bool>("TwoFactorEnabled")
                         .HasColumnType("bit");
 
-                    b.Property<Guid>("UserInfoId")
-                        .ValueGeneratedOnUpdateSometimes()
-                        .HasColumnType("uniqueidentifier")
-                        .HasColumnName("UserInfoId");
-
                     b.Property<string>("UserName")
                         .ValueGeneratedOnUpdateSometimes()
                         .HasMaxLength(256)
                         .HasColumnType("nvarchar(256)")
                         .HasColumnName("UserName");
 
-                    b.Property<Guid>("UserSubscriptionId")
-                        .ValueGeneratedOnUpdateSometimes()
-                        .HasColumnType("uniqueidentifier")
-                        .HasColumnName("UserSubscriptionId");
-
                     b.HasKey("Id");
-
-                    b.HasIndex("GeolocationId");
 
                     b.HasIndex("NormalizedEmail")
                         .HasDatabaseName("EmailIndex");
@@ -372,10 +343,6 @@ namespace FamilyHelper.Persistence.Migrations
                         .IsUnique()
                         .HasDatabaseName("UserNameIndex")
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
-
-                    b.HasIndex("UserInfoId");
-
-                    b.HasIndex("UserSubscriptionId");
 
                     b.ToTable("Users", (string)null);
                 });
@@ -541,11 +508,13 @@ namespace FamilyHelper.Persistence.Migrations
 
             modelBuilder.Entity("FamilyHelper.Core.Geolocation", b =>
                 {
-                    b.HasOne("FamilyHelper.Core.User", null)
+                    b.HasOne("FamilyHelper.Core.User", "User")
                         .WithOne("Geolocation")
                         .HasForeignKey("FamilyHelper.Core.Geolocation", "UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("FamilyHelper.Core.ListItem", b =>
@@ -587,11 +556,13 @@ namespace FamilyHelper.Persistence.Migrations
 
             modelBuilder.Entity("FamilyHelper.Core.UserInfo", b =>
                 {
-                    b.HasOne("FamilyHelper.Core.User", null)
+                    b.HasOne("FamilyHelper.Core.User", "User")
                         .WithOne("UserInfo")
                         .HasForeignKey("FamilyHelper.Core.UserInfo", "UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("FamilyHelper.Core.UserSubscription", b =>
@@ -602,40 +573,15 @@ namespace FamilyHelper.Persistence.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("FamilyHelper.Core.User", null)
+                    b.HasOne("FamilyHelper.Core.User", "User")
                         .WithOne("UserSubscription")
                         .HasForeignKey("FamilyHelper.Core.UserSubscription", "UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.Navigation("SubscriptionPlan");
-                });
 
-            modelBuilder.Entity("FamilyHelper.Persistence.Entities.AppUser", b =>
-                {
-                    b.HasOne("FamilyHelper.Core.Geolocation", "Geolocation")
-                        .WithMany()
-                        .HasForeignKey("GeolocationId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("FamilyHelper.Core.UserInfo", "UserInfo")
-                        .WithMany()
-                        .HasForeignKey("UserInfoId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("FamilyHelper.Core.UserSubscription", "UserSubscription")
-                        .WithMany()
-                        .HasForeignKey("UserSubscriptionId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Geolocation");
-
-                    b.Navigation("UserInfo");
-
-                    b.Navigation("UserSubscription");
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole<System.Guid>", b =>

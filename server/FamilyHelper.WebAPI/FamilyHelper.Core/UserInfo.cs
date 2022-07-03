@@ -8,14 +8,15 @@ namespace FamilyHelper.Core
 {
     public class UserInfo
     {
-        public Guid UserInfoId { get; set; }
-        public string Tag { get; set; }
-        public string Status { get; set; }
+        public Guid UserInfoId { get; set; } = Guid.NewGuid();
+        public string? Tag { get; set; }
+        public string? Status { get; set; }
         public DateTime BirthDate { get; set; }
-        public string Avatar { get; set; }
+        public string? Avatar { get; set; }
         public string FirstName { get; set; }
-        public string LastName { get; set; }
+        public string? LastName { get; set; }
 
         public Guid UserId { get; set; }
+        public User User { get; set; }
     }
 }

@@ -8,7 +8,7 @@ namespace FamilyHelper.Core
 {
     public class Role
     {
-        public Guid Id { get; set; }
+        public Guid Id { get; set; } = Guid.NewGuid();
         public string Name { get; set; }
         public string NormalizedName { get; set; }
     }

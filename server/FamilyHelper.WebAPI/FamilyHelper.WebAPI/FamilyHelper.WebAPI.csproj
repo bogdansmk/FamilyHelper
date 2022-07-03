@@ -15,12 +15,12 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
+    <ProjectReference Include="..\FamilyHelper.Core\FamilyHelper.Core.csproj" />
+    <ProjectReference Include="..\FamilyHelper.Services\FamilyHelper.Services.csproj" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\FamilyHelper.Core\FamilyHelper.Core.csproj" />
-    <ProjectReference Include="..\FamilyHelper.Services\FamilyHelper.Services.csproj" />
+    <Folder Include="Identity\" />
   </ItemGroup>
 
 </Project>
