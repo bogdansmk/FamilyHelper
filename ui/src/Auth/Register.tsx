@@ -91,24 +91,30 @@ export default class RegistrationPage extends React.Component<IRegistrationProps
         }
         else if (this.state.email && this.state.password && this.state.secondPassword && this.state.name) {
             const user = new UserReg(this.state.email, this.state.password, this.state.name);
-            fetch('/api', {
+            fetch('https://localhost:5000/api/auth/register', {
                 method: 'POST',
                 headers: {
                     'Accept': 'application/json',
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({ user })
-            }).then(res => res.json())
-                .then(
-                    (result) => {
-                        if (result.status === 200) {
-                            this.setAuthorized();
-                        }
-                        else {
-                            alert("Я без понятия по какой причине Витя отправил на клиент не 200 статус, но ты не будешь зарегестрирован.")
-                        }
+                body: JSON.stringify(
+                    {
+                        Email: this.state.email,
+                        Password: this.state.password,
+                        RepeatPassword: this.state.password,
+                        FirstName: this.state.name,
+                    })
+            }).then(
+                (result) => {
+                    if (result.status === 200) {
+                        const bearer = result.json()
+                        this.setAuthorized();
                     }
-                )
+                    else {
+                        alert("Я без понятия по какой причине Витя отправил на клиент не 200 статус, но ты не будешь зарегестрирован.")
+                    }
+                }
+            )
         }
         else {
             alert("Please fill all fields to continue registration")

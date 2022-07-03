@@ -70,25 +70,24 @@ export default class LoginPage extends React.Component<ILoginPageState, ILoginPa
 
     submit = () => {
         if (this.state.email && this.state.password) {
-            fetch('/api', {
+            fetch('https://localhost:5000/api/auth/login', {
                 method: 'POST',
                 headers: {
                     'Accept': 'application/json',
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({ email: this.state.email, password: this.state.password })
+                body: JSON.stringify({ Email: this.state.email, Password: this.state.password })
             }).then(
-                res => res.json())
-                .then(
-                    (result) => {
-                        if (result.status === 200) {
-                            this.setAuthorized();
-                        }
-                        else {
-                            alert("Я без понятия по какой причине Витя отправил на клиент не 200 статус, но ты не будешь авторизован.")
-                        }
+                (result) => {
+                    if (result.status == 200) {
+                        const bearer = result.json()
+                        this.setAuthorized();
                     }
-                )
+                    else {
+                        alert("Я без понятия по какой причине Витя отправил на клиент не 200 статус, но ты не будешь авторизован.")
+                    }
+                }
+            )
         }
         else {
             alert("Please fill all fields to authorize")
