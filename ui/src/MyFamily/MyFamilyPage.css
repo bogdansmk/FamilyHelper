@@ -23,11 +23,48 @@
 }
 
 .ourFamilyBody {
-    padding: 0 25px 30px 25px;
+    padding: 10px 25px 30px 25px;
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
     overflow: auto;
-    column-gap: 50px;
-    row-gap: 30px;
+    row-gap: 26px;
 }
 
+.userCard {
+    max-height: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex: 1;
+}
+
+.userInfo {
+    margin-left: 10px;
+    margin-right: auto;
+    position: relative;
+}
+
+.userTag {
+    background: #1E8BC3;
+    color: #fff !important;
+    position: absolute;
+    top: -5px;
+    transform: translateX(135%);
+    height: 16px !important;
+}
+
+.userName {
+    font-size: 20px;
+    line-height: 24px;
+}
+
+.userStatus {
+    font-size: 14px;
+    line-height: 14px;
+}
+
+.userHeadStatus {
+    font-size: 12px;
+    line-height: 12px;
+    color: rgba(0, 0, 0, 0.6);
+}

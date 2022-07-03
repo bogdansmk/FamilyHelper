@@ -1,0 +1,60 @@
+.addNewMemberBtn {
+    height: 50px;
+    border: 1px solid #000;
+    border-radius: 25px;
+    display: flex;
+    align-items: center;
+    padding: 0 15px;
+    font-size: 16px;
+    line-height: 20px;
+    cursor: pointer;
+}
+
+.addNewMemberBtn > svg {
+    margin-right: 25px;
+}
+
+.row {
+    margin-top: 5px;
+    display: flex;
+}
+
+.emailsInput {
+    width: 300px !important;
+    margin-right: 24px !important;
+}
+
+.divider {
+    margin: 16px 0 !important;
+}
+
+.label {
+    margin-bottom: 10px;
+}
+
+.copyToClipboardInput {
+    width: 330px;
+    margin-bottom: 20px;
+    position: relative;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.copyToClipboardInput input {
+    -webkit-text-fill-color: #000 !important;
+    cursor: text;
+}
+
+.copyIcon {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: #1E8BC3;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    cursor: pointer;
+}
