@@ -1,8 +1,7 @@
 .leftMenu {
     width: 100px;
     height: 100%;
-    border-right: 1px solid #F5F5F5;
-    box-shadow: 1px 4px 7px 0 #000000D9;
+    box-shadow: 1px 0 7px 0 rgba(0, 0, 0, 0.85);
     text-align: center;
     position: relative;
 }
@@ -13,6 +12,12 @@
     margin: 30px 0;
     text-decoration: none;
     color: #000;
+    font-size: 13px;
+    font-weight: 300;
+}
+
+.menuItem img {
+    width: 35px;
 }
 
 .menuItem:last-child {

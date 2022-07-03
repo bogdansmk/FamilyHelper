@@ -1,9 +1,13 @@
-import { CalendarMonth, Groups, ListAlt, Logout } from "@mui/icons-material";
-import { IMenuItem } from "../components/LeftMenu/LeftMenu";
+import {IMenuItem} from "../components/LeftMenu/LeftMenu";
+import PeopleCommunity from "@fluentui/svg-icons/icons/people_community_20_filled.svg";
+import Calendar from "@fluentui/svg-icons/icons/calendar_rtl_20_regular.svg";
+import List from "@fluentui/svg-icons/icons/text_bullet_list_square_20_regular.svg";
+import Logout from "@fluentui/svg-icons/icons/arrow_exit_20_regular.svg";
 
 export const MenuItems: IMenuItem[] = [
-    {title: 'My family', url: '/my-family', icon: <Groups fontSize={"large"}/>},
-    {title: 'Calendar', url: '/calendar', icon: <CalendarMonth fontSize={"large"}/>},
-    {title: 'Lists', url: '/lists', icon: <ListAlt fontSize={"large"}/>},
-    {title: 'Logout', url: '/', icon: <Logout fontSize={"large"}/>},
+    {title: 'My family', url: '/my-family', icon: <img src={PeopleCommunity} alt={''}/>},
+    {title: 'Calendar', url: '/calendar', icon: <img src={Calendar} alt={''}/>},
+    {title: 'Lists', url: '/lists', icon: <img src={List} alt={''}/>},
+    {title: 'Logout', url: '/', icon: <img src={Logout} alt={''}/>},
 ];
+
