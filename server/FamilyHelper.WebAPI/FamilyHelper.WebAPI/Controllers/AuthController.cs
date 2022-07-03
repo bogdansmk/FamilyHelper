@@ -11,6 +11,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace FamilyHelper.WebAPI.Controllers
 {
+    [Route("api/auth")]
     public class AuthController : Controller
     {
         private readonly AppDbContext _context;
@@ -38,7 +39,7 @@ namespace FamilyHelper.WebAPI.Controllers
         [AllowAnonymous]
         [Route("login")]
         [HttpPost]
-        public async Task<ActionResult<string>> Login(LoginViewModel loginModel)
+        public async Task<ActionResult<string>> Login([FromBody]LoginViewModel loginModel)
         {
             if (string.IsNullOrEmpty(loginModel.Email) || string.IsNullOrEmpty(loginModel.Password))
             {
@@ -62,8 +63,8 @@ namespace FamilyHelper.WebAPI.Controllers
 
                 if (token != null)
                 {
-                    HttpContext.Session.SetString("Token", token);
-                    return token;
+                    // HttpContext.Session.SetString("Token", token);
+                    return Ok(token);
                 }
                 else
                 {
@@ -79,7 +80,7 @@ namespace FamilyHelper.WebAPI.Controllers
         [AllowAnonymous]
         [Route("register")]
         [HttpPost]
-        public async Task<IActionResult> Register(RegisterViewModel registerModel)
+        public async Task<IActionResult> Register([FromBody]RegisterViewModel registerModel)
         {
             if (string.IsNullOrEmpty(registerModel.Email)
                 || string.IsNullOrEmpty(registerModel.Password)
@@ -104,11 +105,11 @@ namespace FamilyHelper.WebAPI.Controllers
                 return Problem();
             }
 
-            var subscriptionPlan = await _context.SubscriptionPlans.FirstOrDefaultAsync(sp => sp.Name == "Basic");
-            if (subscriptionPlan is null)
-            {
-                return Problem();
-            }
+            //var subscriptionPlan = await _context.SubscriptionPlans.FirstOrDefaultAsync(sp => sp.Name == "Basic");
+            //if (subscriptionPlan is null)
+            //{
+            //    return Problem();
+            //}
 
             var userInfo = new UserInfo()
             {
@@ -119,17 +120,17 @@ namespace FamilyHelper.WebAPI.Controllers
             {
                 UserId = userId
             };
-            var userSubscription = new UserSubscription()
-            {
-                SubscriptionPlanId = subscriptionPlan.SubscriptionPlanId,
-                UserId = userId,
-            };
+            //var userSubscription = new UserSubscription()
+            //{
+            //    SubscriptionPlanId = subscriptionPlan.SubscriptionPlanId,
+            //    UserId = userId,
+            //};
             _context.Set<UserInfo>().Add(userInfo);
             _context.Set<Geolocation>().Add(geolocation);
-            _context.Set<UserSubscription>().Add(userSubscription);
+            //_context.Set<UserSubscription>().Add(userSubscription);
 
             var saveResult = await _context.SaveChangesAsync();
-            if (saveResult == 3)
+            if (saveResult == 2)
             {
                 return Ok();
             }
