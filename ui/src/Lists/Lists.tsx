@@ -2,7 +2,7 @@ import React from 'react';
 import Header from "../components/Header/Header";
 import LeftMenu from "../components/LeftMenu/LeftMenu";
 import SingleList from '../Models/SingleList';
-import {MenuItems} from "../utils/constants";
+import { MenuItems } from "../utils/constants";
 import List from './List';
 import './Lists.css';
 import AddNewListDialog from "./AddNewListDialog/AddNewListDialog";
@@ -36,7 +36,7 @@ export default class ListsPage extends React.Component<IListsPage> {
                 'Content-Type': 'application/json'
             }
         }).then(res => res.json())
-            .then(result => this.setState({beers: result}))
+            .then(result => this.setState({ beers: result }))
     }
 
 
@@ -54,16 +54,16 @@ export default class ListsPage extends React.Component<IListsPage> {
         return (
             <>
                 <Header pageTitle='Lists'
-                        rightPartText=''
-                        rightPartUrl=''/>
-                <LeftMenu items={MenuItems}/>
+                    rightPartText=''
+                    rightPartUrl='' />
+                <LeftMenu items={MenuItems} />
                 <div className="main">
                     <div className="mainTitle">Shared Lists</div>
                     <div className="mainBody">
                         <>
                             {this.renderLists()}
                         </>
-                        <AddNewListDialog onAdd={this.fetchLists}/>
+                        <AddNewListDialog onAdd={this.fetchLists} />
                     </div>
                 </div>
             </>

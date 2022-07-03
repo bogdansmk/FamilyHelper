@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
-import {Route, BrowserRouter, Routes} from 'react-router-dom';
+import { Route, BrowserRouter, Routes } from 'react-router-dom';
 import LoginPage from './Auth/Login';
 import RegistrationPage from './Auth/Register';
 import ListsPage from "./Lists/Lists";
@@ -14,9 +14,9 @@ root.render(
     <React.StrictMode>
         <BrowserRouter>
             <Routes>
-                <Route path="/" element={<LoginPage/>}/>
-                <Route path="Register" element={<RegistrationPage/>}/>
-                <Route path="Lists" element={<ListsPage/>}/>
+                <Route path="/" element={<LoginPage />} />
+                <Route path="Register" element={<RegistrationPage />} />
+                <Route path="Lists" element={<ListsPage />} />
             </Routes>
         </BrowserRouter>
     </React.StrictMode>

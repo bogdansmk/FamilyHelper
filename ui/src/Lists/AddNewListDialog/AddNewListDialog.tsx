@@ -8,7 +8,7 @@ import {
     FormHelperText,
     TextField
 } from "@mui/material";
-import {AddCircle} from "@mui/icons-material";
+import { AddCircle } from "@mui/icons-material";
 
 interface IAddNewListDialogState {
     isOpen: boolean
@@ -28,15 +28,15 @@ export default class AddNewListDialog extends React.Component<IAddNewListDialogP
     }
 
     handleOpen = () => {
-        this.setState({isOpen: true})
+        this.setState({ isOpen: true })
     };
 
     handleClose = () => {
-        this.setState({isOpen: false, listName: '', isListNameEmptyError: false})
+        this.setState({ isOpen: false, listName: '', isListNameEmptyError: false })
     };
 
     handleChange = (e: { target: { value: string; }; }) => {
-        this.setState({listName: e.target.value, isListNameEmptyError: false});
+        this.setState({ listName: e.target.value, isListNameEmptyError: false });
     }
 
     handleAddNewList = () => {
@@ -47,7 +47,7 @@ export default class AddNewListDialog extends React.Component<IAddNewListDialogP
                     'Accept': 'application/json',
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({listName: this.state.listName})
+                body: JSON.stringify({ listName: this.state.listName })
             })
                 .then(res => res.json())
                 .then((result) => {
@@ -61,7 +61,7 @@ export default class AddNewListDialog extends React.Component<IAddNewListDialogP
                     }
                 })
         } else {
-            this.setState({isListNameEmptyError: true})
+            this.setState({ isListNameEmptyError: true })
         }
     }
 
@@ -72,7 +72,7 @@ export default class AddNewListDialog extends React.Component<IAddNewListDialogP
                     <div className="cardBody">
                         Add new list
                         <div className="addNewIcon">
-                            <AddCircle sx={{fontSize: 96}}/>
+                            <AddCircle sx={{ fontSize: 96 }} />
                         </div>
                     </div>
                 </div>
@@ -87,7 +87,7 @@ export default class AddNewListDialog extends React.Component<IAddNewListDialogP
                             fullWidth
                             error={this.state.isListNameEmptyError}
                             value={this.state.listName}
-                            onChange={this.handleChange}/>
+                            onChange={this.handleChange} />
                         {
                             this.state.isListNameEmptyError &&
                             <FormHelperText error>List name cannot be empty</FormHelperText>
