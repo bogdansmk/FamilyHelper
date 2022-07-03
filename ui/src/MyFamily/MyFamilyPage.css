@@ -1,0 +1,33 @@
+.myFamilyMain {
+    grid-column-end: 3;
+}
+
+.ourFamily {
+    border-radius: 20px;
+    background-color: #fff;
+    margin: 25px 25px 25px 0;
+    box-shadow: 4px 2px 20px 0 #00000026;
+    overflow: auto;
+}
+
+.ourFamilyTitle {
+    font-size: 20px;
+    line-height: 24px;
+    position: sticky;
+    background: #fff;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    padding: 20px 25px 10px 25px;
+}
+
+.ourFamilyBody {
+    padding: 0 25px 30px 25px;
+    display: flex;
+    flex-wrap: wrap;
+    overflow: auto;
+    column-gap: 50px;
+    row-gap: 30px;
+}
+
