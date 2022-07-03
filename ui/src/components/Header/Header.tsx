@@ -1,3 +1,4 @@
+import { AccountCircle } from '@mui/icons-material';
 import React from 'react';
 import { Link } from 'react-router-dom';
 import "./Header.css";
@@ -8,7 +9,18 @@ interface IHeaderProps {
     rightPartUrl: string;
 }
 
-export default class Header extends React.Component<IHeaderProps> {
+interface IHeaderState {
+    authorized?: boolean;
+}
+
+type IHeader = IHeaderProps & IHeaderState;
+
+export default class Header extends React.Component<IHeader> {
+
+    state: IHeaderState = {
+        authorized: false,
+    }
+
 
     renderPageTitle() {
         return (
@@ -17,12 +29,24 @@ export default class Header extends React.Component<IHeaderProps> {
     }
 
     renderRightPart() {
-        const { rightPartUrl, rightPartText } = this.props;
-        return (
-            <div className="rightPart">
-                <Link className='header-rightPart-link' to={rightPartUrl}>{rightPartText}</Link>
-            </div>
-        )
+        const { rightPartUrl, rightPartText, authorized } = this.props;
+        if (authorized) {
+            return (
+                <div className="rightPart">
+                    <div className='accountIcon'>
+                        <AccountCircle fontSize='large' />
+                    </div>
+                </div>
+            )
+        }
+        else {
+            return (
+                <div className="rightPart">
+                    <Link className='header-rightPart-link' to={rightPartUrl}>{rightPartText}</Link>
+                </div>
+            )
+        }
+
     }
 
     render() {

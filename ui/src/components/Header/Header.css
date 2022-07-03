@@ -9,6 +9,10 @@
     justify-content: space-between;
 }
 
+#root > div.header > div.rightPart > div > svg{
+    font-size: 50px;
+}
+
 .leftPart {
     display: flex;
 }
