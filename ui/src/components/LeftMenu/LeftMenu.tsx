@@ -1,8 +1,10 @@
 import React from 'react';
 import './LeftMenu.css'
+import {Link} from "react-router-dom";
 
 export interface IMenuItem {
     title: string
+    url: string
     icon?: React.ReactNode
     isActive?: boolean
 }
@@ -17,12 +19,12 @@ export default class LeftMenu extends React.Component<IMenu> {
             <div className="leftMenu">
                 {this.props.items.map((menuItem: IMenuItem) => {
                     return (
-                        <div className={menuItem.isActive ? "menuItem menuItemActive" : "menuItem"}>
+                        <Link to={menuItem.url} className={menuItem.isActive ? "menuItem menuItemActive" : "menuItem"}>
                             <div>
                                 {menuItem.icon}
                             </div>
                             {menuItem.title}
-                        </div>
+                        </Link>
                     );
                 })}
             </div>
