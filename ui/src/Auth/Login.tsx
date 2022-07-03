@@ -45,7 +45,6 @@ export default class LoginPage extends React.Component<ILoginPageState, ILoginPa
             <input
                 className='loginInput'
                 onChange={this.onEmailChange}
-                placeholder="Email"
                 value={this.state.email}
             />
         )
@@ -56,7 +55,6 @@ export default class LoginPage extends React.Component<ILoginPageState, ILoginPa
             <input
                 className='loginInput'
                 onChange={this.onPasswordChange}
-                placeholder="Password"
                 value={this.state.password}
             />
         )

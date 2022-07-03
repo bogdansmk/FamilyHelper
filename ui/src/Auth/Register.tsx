@@ -30,7 +30,6 @@ export default class RegistrationPage extends React.Component<IRegistrationProps
             <input
                 className='registerInput'
                 onChange={this.onEmailChange}
-                placeholder="Email"
                 value={this.state.email}
             />
         )
@@ -49,7 +48,6 @@ export default class RegistrationPage extends React.Component<IRegistrationProps
             <input
                 className='registerInput'
                 onChange={this.onPasswordChange}
-                placeholder="Password"
                 value={this.state.password}
             />
         )
@@ -64,7 +62,6 @@ export default class RegistrationPage extends React.Component<IRegistrationProps
             <input
                 className='registerInput'
                 onChange={this.onSecondPasswordChange}
-                placeholder="Repeat Password"
                 value={this.state.secondPassword}
             />
         )
@@ -79,7 +76,6 @@ export default class RegistrationPage extends React.Component<IRegistrationProps
             <input
                 className='registerInput'
                 onChange={this.onNameChange}
-                placeholder="Name"
                 value={this.state.name}
             />
         )
