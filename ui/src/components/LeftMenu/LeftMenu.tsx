@@ -12,10 +12,6 @@ interface IMenu {
 }
 
 export default class LeftMenu extends React.Component<IMenu> {
-    constructor(props: IMenu) {
-        super(props);
-    }
-
     render() {
         return (
             <div className="leftMenu">

@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Interface } from 'readline';
-import "./Header.css"
+import "./Header.css";
 
 interface IHeaderProps {
     pageTitle: string;
