@@ -6,6 +6,8 @@ import { MenuItems } from "../utils/constants";
 import List from './List';
 import './Lists.css';
 import AddNewListDialog from "./AddNewListDialog/AddNewListDialog";
+import { Checkbox, FormControlLabel, FormGroup } from '@mui/material';
+import { Star, StarBorder } from '@mui/icons-material';
 
 interface IListsPageState {
     lists?: SingleList[];
@@ -64,6 +66,42 @@ export default class ListsPage extends React.Component<IListsPage> {
                     <div className="mainBody">
                         <>
                             {this.renderLists()}
+                            <div className="card">
+                            <div className="cardTitle">Products
+                                <Checkbox
+                                    icon={<StarBorder color="action" />}
+                                    checkedIcon={<Star />}
+                                    color={"warning"}
+                                    size={"medium"}
+                                />
+                            </div>
+                            <div className="cardBody">
+                                <FormGroup>
+                                    <FormControlLabel control={<Checkbox defaultChecked />} label="Milk" />
+                                    <FormControlLabel control={<Checkbox />} label="Coca-cola" />
+                                    <FormControlLabel control={<Checkbox />} label="Sweets" />
+                                    <FormControlLabel control={<Checkbox />} label="Apples" />
+                                </FormGroup>
+                            </div>
+                        </div>
+                        <div className="card">
+                            <div className="cardTitle">Products
+                                <Checkbox
+                                    icon={<StarBorder color="action" />}
+                                    checkedIcon={<Star />}
+                                    color={"warning"}
+                                    size={"medium"}
+                                />
+                            </div>
+                            <div className="cardBody">
+                                <FormGroup>
+                                    <FormControlLabel control={<Checkbox defaultChecked />} label="Milk" />
+                                    <FormControlLabel control={<Checkbox />} label="Coca-cola" />
+                                    <FormControlLabel control={<Checkbox />} label="Sweets" />
+                                    <FormControlLabel control={<Checkbox />} label="Apples" />
+                                </FormGroup>
+                            </div>
+                        </div>
                         </>
                         <AddNewListDialog onAdd={this.fetchLists} />
                     </div>
