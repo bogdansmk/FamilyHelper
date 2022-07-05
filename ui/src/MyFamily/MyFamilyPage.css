@@ -3,6 +3,76 @@
     overflow: hidden;
 }
 
+.postsWrapper {
+    padding: 0 45px;
+}
+
+.post {
+    display: flex;
+    align-items: flex-start;
+}
+
+.postAvatar {
+    margin-top: 5px;
+}
+
+.postAuthor {
+    font-size: 13px;
+    line-height: 15px;
+    font-weight: 500;
+    color: #000;
+    margin-right: 10px;
+}
+
+.postDate {
+    font-size: 13px;
+    line-height: 15px;
+    color: rgba(0, 0, 0, 0.75);
+}
+
+.postBody {
+    display: flex;
+    flex-wrap: wrap;
+    row-gap: 8px;
+    min-height: 58px;
+    background: #fff;
+    border: 1px solid #000;
+    border-radius: 10px;
+    padding: 5px 15px 15px;
+    margin-left: 10px;
+}
+
+.postReply.post {
+    flex-basis: 100%;
+    flex-grow: 1;
+    margin: 0 -15px;
+    border-top: 1px solid #000;
+    padding: 5px 15px 0;
+}
+
+.postReply.post > .postBody {
+    border: none;
+    padding-bottom: 0;
+    margin-left: 0;
+}
+
+.replyBtn {
+    display: flex;
+    margin: 0 -15px -15px;
+    padding: 0 15px;
+    border-top: 1px solid #000;
+    flex-grow: 1;
+    cursor: pointer;
+}
+
+.replyBtn img {
+    height: 100%;
+}
+
+.postText {
+    flex-basis: 100%;
+}
+
 .mapTabPanel {
     height: 100%;
     background: url('../assets/map.svg') no-repeat;

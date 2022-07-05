@@ -7,6 +7,10 @@ import {FHTab, FHTabPanel, FHTabs} from "../components/Tabs/Tabs";
 import AddNewMemberDialog from "./AddNewMemberDialog/AddNewMemberDialog";
 import UserCard, {IUser} from "./UserCard/UserCard";
 import map from '../assets/map.png'
+import {Divider} from "@mui/material";
+import Joseph from '../assets/joseph.png'
+import Jane from '../assets/jane.png'
+import Reply from "@fluentui/svg-icons/icons/arrow_reply_down_16_regular.svg";
 
 interface IMyFamilyState {
     activeTab: string
@@ -32,7 +36,29 @@ export default class MyFamilyPage extends React.Component {
                         <FHTab value="map" label="Map"/>
                     </FHTabs>
                     <FHTabPanel value={'posts'} index={this.state.activeTab}>
-                        Posts
+                        <div className="postsWrapper">
+                            <Divider className="divider">Today</Divider>
+                            <div className="post">
+                                <img className="postAvatar" src={Joseph} alt="user"/>
+                                <div className="postBody">
+                                    <div className="postAuthor">Joseph</div>
+                                    <div className="postDate">Today 4:20 PM</div>
+                                    <div className="postText">Welcome to our Family Helper, my dears!!!</div>
+                                    <div className="postReply post">
+                                        <img className="postAvatar" src={Jane} alt="user"/>
+                                        <div className="postBody">
+                                            <div className="postAuthor">Jane</div>
+                                            <div className="postDate">Today 4:24 PM</div>
+                                            <div className="postText">Hooray!! &#127881;&#127881;&#127881;</div>
+                                        </div>
+                                    </div>
+                                    <div className="replyBtn">
+                                        <img src={Reply} alt=''/> Reply
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
                     </FHTabPanel>
                     <FHTabPanel className="mapTabPanel" value={'map'} index={this.state.activeTab}/>
                 </div>
