@@ -33,7 +33,7 @@
 }
 
 .menuItemActive > div {
-    filter: invert(33%) sepia(45%) saturate(3846%) hue-rotate(179deg) brightness(101%) contrast(76%);
+    filter: invert(33%) sepia(45%) saturate(3846%) hue-rotate(179deg) brightness(101%) contrast(76%); /*#1E8BC3*/
 }
 
 .bottomMenuItem {
