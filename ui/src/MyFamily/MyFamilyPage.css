@@ -1,10 +1,15 @@
 .myFamilyMain {
+    display: flex;
+    flex-direction: column;
     grid-column-end: 3;
     overflow: hidden;
 }
 
 .postsWrapper {
-    padding: 0 45px;
+    padding: 0 45px 100px;
+    position: relative;
+    height: 100%;
+    overflow: auto
 }
 
 .post {
@@ -71,6 +76,20 @@
 
 .postText {
     flex-basis: 100%;
+}
+
+.addPostBtn {
+    display: flex;
+    align-items: center;
+    column-gap: 5px;
+    height: 30px;
+    padding: 0 15px;
+    border: 1px solid #000000;
+    border-radius: 20px;
+    position: absolute;
+    bottom: 25px;
+    left: 65px;
+    cursor: pointer;
 }
 
 .mapTabPanel {

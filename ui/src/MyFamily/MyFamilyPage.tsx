@@ -11,6 +11,7 @@ import {Divider} from "@mui/material";
 import Joseph from '../assets/joseph.png'
 import Jane from '../assets/jane.png'
 import Reply from "@fluentui/svg-icons/icons/arrow_reply_down_16_regular.svg";
+import TextEdit from "@fluentui/svg-icons/icons/text_edit_style_20_regular.svg";
 
 interface IMyFamilyState {
     activeTab: string
@@ -37,7 +38,7 @@ export default class MyFamilyPage extends React.Component {
                     </FHTabs>
                     <FHTabPanel value={'posts'} index={this.state.activeTab}>
                         <div className="postsWrapper">
-                            <Divider className="divider">Today</Divider>
+                            <Divider className="divider" sx={{marginTop: '0 !important'}}>Today</Divider>
                             <div className="post">
                                 <img className="postAvatar" src={Joseph} alt="user"/>
                                 <div className="postBody">
@@ -56,7 +57,11 @@ export default class MyFamilyPage extends React.Component {
                                         <img src={Reply} alt=''/> Reply
                                     </div>
                                 </div>
+                            </div>
 
+                            <div className="addPostBtn">
+                                <img src={TextEdit} alt=""/>
+                                New post
                             </div>
                         </div>
                     </FHTabPanel>

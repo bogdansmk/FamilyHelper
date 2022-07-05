@@ -1,3 +1,4 @@
 .fhTabPanel {
     margin-top: 14px;
+    flex-grow: 1;
 }
