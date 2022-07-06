@@ -10,6 +10,7 @@ import { FHTab, FHTabPanel, FHTabs } from "../components/Tabs/Tabs";
 import FamilyMember from '../Models/FamilyMeber';
 import { MenuItems, Users } from "../utils/constants";
 import memberAvatar from './../assets/joseph.png';
+import memberWithoutAvatar from '../assets/no-avatar.png';
 import AddNewMemberDialog from "./AddNewMemberDialog/AddNewMemberDialog";
 import './MyFamilyPage.css';
 import UserCard, { IUser } from "./UserCard/UserCard";
@@ -110,7 +111,7 @@ export default class MyFamilyPage extends React.Component {
                         {this.state.familyMembers?.map((user: FamilyMember) => {
                             return <UserCard
                                 name={user.userInfo?.firstName}
-                                avatarUrl={memberAvatar}
+                                avatarUrl={memberWithoutAvatar}
                                 status={"some status"}
                                 isHead={false}
                             />
