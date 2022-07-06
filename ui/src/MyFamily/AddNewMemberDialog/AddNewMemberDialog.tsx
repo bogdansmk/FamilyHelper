@@ -54,8 +54,7 @@ export default class AddNewMemberDialog extends React.Component<IAddNewMemberDia
             }).then(res => {
                 this.handleClose();
                 this.props.getMembers();
-            }
-            )
+            })
         } else {
             this.setState({ isEmailsEmptyError: true })
         }
