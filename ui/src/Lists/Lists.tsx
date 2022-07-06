@@ -90,51 +90,51 @@ export default class ListsPage extends React.Component<IListsPage> {
                     <div className="mainTitle">Shared Lists</div>
                     <div className="mainBody">
                         <>
+                            <div className="card">
+                                <div className="cardTitle">Products
+                                    <Checkbox
+                                        icon={<StarBorder color="action" />}
+                                        checkedIcon={<Star />}
+                                        color={"warning"}
+                                        size={"medium"}
+                                    />
+                                </div>
+                                <div className="cardBody">
+                                    <FormGroup>
+                                        <FormControlLabel control={<Checkbox defaultChecked />} label="Milk" />
+                                        <FormControlLabel control={<Checkbox />} label="Coca-cola" />
+                                        <FormControlLabel control={<Checkbox />} label="Sweets" />
+                                        <FormControlLabel control={<Checkbox />} label="Apples" />
+                                        <FormControlLabel control={<Checkbox />} label="Coca-cola" />
+                                        <FormControlLabel control={<Checkbox />} label="Sweets" />
+                                        <FormControlLabel control={<Checkbox />} label="Apples" />
+                                        <FormControlLabel control={<Checkbox />} label="Coca-cola" />
+                                        <FormControlLabel control={<Checkbox />} label="Sweets" />
+                                        <FormControlLabel control={<Checkbox />} label="Apples" />
+                                    </FormGroup>
+                                </div>
+                            </div>
+                            <div className="card">
+                                <div className="cardTitle">Products
+                                    <Checkbox
+                                        icon={<StarBorder color="action" />}
+                                        checkedIcon={<Star />}
+                                        color={"warning"}
+                                        size={"medium"}
+                                    />
+                                </div>
+                                <div className="cardBody">
+                                    <FormGroup>
+                                        <FormControlLabel control={<Checkbox defaultChecked />} label="Milk" />
+                                        <FormControlLabel control={<Checkbox />} label="Coca-cola" />
+                                        <FormControlLabel control={<Checkbox />} label="Sweets" />
+                                        <FormControlLabel control={<Checkbox />} label="Apples" />
+                                    </FormGroup>
+                                </div>
+                            </div>
                             {this.renderLists()}
-                            <div className="card">
-                                <div className="cardTitle">Products
-                                    <Checkbox
-                                        icon={<StarBorder color="action" />}
-                                        checkedIcon={<Star />}
-                                        color={"warning"}
-                                        size={"medium"}
-                                    />
-                                </div>
-                                <div className="cardBody">
-                                    <FormGroup>
-                                        <FormControlLabel control={<Checkbox defaultChecked />} label="Milk" />
-                                        <FormControlLabel control={<Checkbox />} label="Coca-cola" />
-                                        <FormControlLabel control={<Checkbox />} label="Sweets" />
-                                        <FormControlLabel control={<Checkbox />} label="Apples" />
-                                        <FormControlLabel control={<Checkbox />} label="Coca-cola" />
-                                        <FormControlLabel control={<Checkbox />} label="Sweets" />
-                                        <FormControlLabel control={<Checkbox />} label="Apples" />
-                                        <FormControlLabel control={<Checkbox />} label="Coca-cola" />
-                                        <FormControlLabel control={<Checkbox />} label="Sweets" />
-                                        <FormControlLabel control={<Checkbox />} label="Apples" />
-                                    </FormGroup>
-                                </div>
-                            </div>
-                            <div className="card">
-                                <div className="cardTitle">Products
-                                    <Checkbox
-                                        icon={<StarBorder color="action" />}
-                                        checkedIcon={<Star />}
-                                        color={"warning"}
-                                        size={"medium"}
-                                    />
-                                </div>
-                                <div className="cardBody">
-                                    <FormGroup>
-                                        <FormControlLabel control={<Checkbox defaultChecked />} label="Milk" />
-                                        <FormControlLabel control={<Checkbox />} label="Coca-cola" />
-                                        <FormControlLabel control={<Checkbox />} label="Sweets" />
-                                        <FormControlLabel control={<Checkbox />} label="Apples" />
-                                    </FormGroup>
-                                </div>
-                            </div>
                         </>
-                        <AddNewListDialog onAdd={this.fetchLists} />
+                        <AddNewListDialog onAdd={() => this.fetchLists()} />
                     </div>
                 </div>
             </>

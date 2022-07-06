@@ -116,7 +116,7 @@ export default class MyFamilyPage extends React.Component {
                             />
                         })}
                         <AddNewMemberDialog
-                            getMembers={this.getMembers}
+                            getMembers={() => this.getMembers()}
                         />
                     </div>
                 </div>
