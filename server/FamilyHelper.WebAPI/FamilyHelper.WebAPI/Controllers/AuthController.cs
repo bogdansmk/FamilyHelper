@@ -63,8 +63,7 @@ namespace FamilyHelper.WebAPI.Controllers
 
                 if (token != null)
                 {
-                    // HttpContext.Session.SetString("Token", token);
-                    return Ok(token);
+                    return token;
                 }
                 else
                 {
@@ -130,12 +129,12 @@ namespace FamilyHelper.WebAPI.Controllers
             //_context.Set<UserSubscription>().Add(userSubscription);
 
             var saveResult = await _context.SaveChangesAsync();
-            if (saveResult == 2)
+            if (saveResult == 0)
             {
-                return Ok();
+                return Problem();
             }
 
-            return Problem();
+            return Ok();
         }
     }
 }
