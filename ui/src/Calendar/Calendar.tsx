@@ -7,7 +7,7 @@ export default class CalendarPage extends React.Component {
     render() {
         return (
             <>
-                <Header pageTitle={'My family'} authorized={true}/>
+                <Header pageTitle={'Calendar'} authorized={true}/>
                 <LeftMenu items={MenuItems} activeItemId={1}/>
                 <div className="main">
                     <div className="mainTitle">Calendar</div>
