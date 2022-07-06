@@ -7,6 +7,7 @@ import LoginPage from './Auth/Login';
 import RegistrationPage from './Auth/Register';
 import ListsPage from "./Lists/Lists";
 import MyFamilyPage from "./MyFamily/MyFamilyPage";
+import NoFamilyPage from './MyFamily/NoFamilyPage';
 
 const root = ReactDOM.createRoot(
     document.getElementById('root') as HTMLElement
@@ -19,6 +20,7 @@ root.render(
                 <Route path="register" element={<RegistrationPage />} />
                 <Route path="my-family" element={<MyFamilyPage />} />
                 <Route path="lists" element={<ListsPage />} />
+                <Route path="no-family" element={<NoFamilyPage />} />
             </Routes>
         </BrowserRouter>
     </React.StrictMode>
