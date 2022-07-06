@@ -1,16 +1,15 @@
+import { Star, StarBorder } from '@mui/icons-material';
+import { Checkbox, FormControlLabel, FormGroup } from '@mui/material';
 import React from 'react';
 import Header from "../components/Header/Header";
 import LeftMenu from "../components/LeftMenu/LeftMenu";
-import SingleList from '../Models/SingleList';
 import { MenuItems } from "../utils/constants";
+import AddNewListDialog from "./AddNewListDialog/AddNewListDialog";
 import List from './List';
 import './Lists.css';
-import AddNewListDialog from "./AddNewListDialog/AddNewListDialog";
-import { Checkbox, FormControlLabel, FormGroup } from '@mui/material';
-import { Star, StarBorder } from '@mui/icons-material';
 
 interface IListsPageState {
-    lists?: SingleList[];
+    lists?: any[];
 }
 
 interface IListsPageProps {
@@ -42,8 +41,8 @@ export default class ListsPage extends React.Component<IListsPage> {
             (result) => {
                 if (result.status == 200) {
                     result.json().then(
-                        lists => {
-                            this.setState({lists: lists});
+                        res => {
+                            this.setState({ lists: res });
                         }
                     );
                 }
@@ -53,13 +52,29 @@ export default class ListsPage extends React.Component<IListsPage> {
 
 
     renderLists() {
-        this.state.lists && this.state.lists.length !== 0 && this.state.lists.map(item => {
-            return (
-                <List
-                    singleList={item}
-                />
-            )
-        })
+        // console.log(this.state.lists)
+        return (
+            this.state.lists && this.state.lists.length !== 0 && this.state.lists.map(item => {
+                console.log(item)
+                return (
+                    <div className="card">
+                        <div className="cardTitle">{item.name}
+                            <Checkbox
+                                icon={<StarBorder color="action" />}
+                                checkedIcon={<Star />}
+                                color={"warning"}
+                                size={"medium"}
+                            />
+                        </div>
+                        <div className="cardBody">
+                            <FormGroup>
+                                {/* <FormControlLabel control={<Checkbox defaultChecked />} label="" /> */}
+                            </FormGroup>
+                        </div>
+                    </div>
+                )
+            })
+        )
     }
 
     render() {
