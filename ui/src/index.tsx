@@ -8,6 +8,7 @@ import RegistrationPage from './Auth/Register';
 import ListsPage from "./Lists/Lists";
 import MyFamilyPage from "./MyFamily/MyFamilyPage";
 import NoFamilyPage from './MyFamily/NoFamilyPage';
+import CalendarPage from "./Calendar/Calendar";
 
 const root = ReactDOM.createRoot(
     document.getElementById('root') as HTMLElement
@@ -19,6 +20,7 @@ root.render(
                 <Route path="/" element={<LoginPage />} />
                 <Route path="register" element={<RegistrationPage />} />
                 <Route path="my-family" element={<MyFamilyPage />} />
+                <Route path="no-family" element={<NoFamilyPage />} />
                 <Route path="calendar" element={<CalendarPage />} />
                 <Route path="lists" element={<ListsPage />} />
             </Routes>
