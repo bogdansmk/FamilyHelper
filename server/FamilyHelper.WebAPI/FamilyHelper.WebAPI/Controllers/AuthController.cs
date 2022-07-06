@@ -11,6 +11,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace FamilyHelper.WebAPI.Controllers
 {
+    [Route("[controller]")]
     public class AuthController : Controller
     {
         private readonly AppDbContext _context;

@@ -77,7 +77,7 @@ export default class LoginPage extends React.Component<ILoginPageState, ILoginPa
 
     submit = () => {
         if (this.state.email && this.state.password) {
-            fetch('https://localhost:5000/api/auth/login', {
+            fetch('https://localhost:5000/Auth/login', {
                 method: 'POST',
                 headers: {
                     'Accept': 'application/json',

@@ -105,7 +105,7 @@ export default class RegistrationPage extends React.Component<IRegistrationProps
         }
         else if (this.state.email && this.state.password && this.state.secondPassword && this.state.name) {
             const user = new UserReg(this.state.email, this.state.password, this.state.name);
-            fetch('https://localhost:5000/api/auth/register', {
+            fetch('https://localhost:5000/Auth/register', {
                 method: 'POST',
                 headers: {
                     'Accept': 'application/json',
