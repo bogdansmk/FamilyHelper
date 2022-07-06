@@ -7,7 +7,7 @@ import LoginPage from './Auth/Login';
 import RegistrationPage from './Auth/Register';
 import ListsPage from "./Lists/Lists";
 import MyFamilyPage from "./MyFamily/MyFamilyPage";
-import CalendarPage from "./Calendar/Calendar";
+import NoFamilyPage from './MyFamily/NoFamilyPage';
 
 const root = ReactDOM.createRoot(
     document.getElementById('root') as HTMLElement
