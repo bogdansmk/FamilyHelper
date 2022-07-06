@@ -36,14 +36,14 @@ namespace FamilyHelper.WebAPI.Controllers
         [AllowAnonymous]
         [Route("login")]
         [HttpPost]
-        public async Task<ActionResult<string>> Login([FromBody]LoginViewModel loginModel)
+        public async Task<ActionResult<AuthorizedUser>> Login([FromBody] LoginViewModel loginModel)
         {
             if (string.IsNullOrEmpty(loginModel.Email) || string.IsNullOrEmpty(loginModel.Password))
             {
                 return BadRequest();
             }
 
-            var user = await _context.Users.FirstOrDefaultAsync(u => u.Email == loginModel.Email);
+            var user = await _context.Users.Include(u => u.UserInfo).FirstOrDefaultAsync(u => u.Email == loginModel.Email);
             if (user == null)
             {
                 return NotFound();
@@ -59,7 +59,8 @@ namespace FamilyHelper.WebAPI.Controllers
 
                 if (token != null)
                 {
-                    return token;
+
+                    return new AuthorizedUser { FirstName = user.UserInfo?.FirstName, Token = token };
                 }
                 else
                 {
@@ -75,7 +76,7 @@ namespace FamilyHelper.WebAPI.Controllers
         [AllowAnonymous]
         [Route("register")]
         [HttpPost]
-        public async Task<IActionResult> Register([FromBody]RegisterViewModel registerModel)
+        public async Task<ActionResult<string>> Register([FromBody] RegisterViewModel registerModel)
         {
             if (string.IsNullOrEmpty(registerModel.Email)
                 || string.IsNullOrEmpty(registerModel.Password)
@@ -130,7 +131,12 @@ namespace FamilyHelper.WebAPI.Controllers
                 return Problem();
             }
 
-            return Ok();
+            var token = await _tokenService
+                    .BuildTokenAsync(_configuration["Jwt:Key"].ToString(),
+                        _configuration["Jwt:Issuer"].ToString(),
+                        user);
+
+            return token;
         }
     }
 }

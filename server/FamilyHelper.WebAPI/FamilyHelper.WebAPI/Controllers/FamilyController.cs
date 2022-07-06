@@ -24,7 +24,7 @@ namespace FamilyHelper.WebAPI.Controllers
         [Authorize]
         [HttpPost]
         [Route("members")]
-        public async Task<IActionResult> AddMember([FromBody]AddMemberViewModel model)
+        public async Task<IActionResult> AddMember([FromBody] AddMemberViewModel model)
         {
             var familyIdStr = User.Claims.FirstOrDefault(c => c.Type == "FamilyId")?.Value;
             if (!Guid.TryParse(familyIdStr, out var familyId))
@@ -58,6 +58,7 @@ namespace FamilyHelper.WebAPI.Controllers
 
             var family = await _context.Families
                 .Include(f => f.Members)
+                .Include("Members.UserInfo")
                 .FirstOrDefaultAsync(f => f.FamilyId == familyId);
 
             return Ok(family?.Members);

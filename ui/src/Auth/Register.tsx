@@ -12,7 +12,7 @@ interface IRegisterPageState {
     email?: string;
     password?: string;
     secondPassword?: string;
-    name?: string;
+    name: string;
     registraionSuccess?: boolean;
 }
 
@@ -121,8 +121,13 @@ export default class RegistrationPage extends React.Component<IRegistrationProps
             }).then(
                 (result) => {
                     if (result.status === 200) {
-                        const bearer = result.json()
-                        this.setAuthorized();
+                        result.json().then(
+                            res => {
+                                localStorage.setItem("Token", res)
+                                localStorage.setItem("UserName", this.state.name)
+                                this.setAuthorized();
+                            }
+                        );
                     }
                     else {
                         alert("Я без понятия по какой причине Витя отправил на клиент не 200 статус, но ты не будешь зарегестрирован.")
@@ -177,7 +182,7 @@ export default class RegistrationPage extends React.Component<IRegistrationProps
                             </div>
                         </div>
                     </div>
-                    {this.state.registraionSuccess && (<Navigate to="/Lists" replace={true} state />)}
+                    {this.state.registraionSuccess && (<Navigate to="my-family" replace={true} state />)}
                 </div>
             </>
         );

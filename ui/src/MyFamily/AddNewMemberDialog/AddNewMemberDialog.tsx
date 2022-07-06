@@ -7,7 +7,7 @@ import {
     FormHelperText,
     TextField
 } from "@mui/material";
-import {Add, ContentCopy} from "@mui/icons-material";
+import { Add, ContentCopy } from "@mui/icons-material";
 import './AddNewMemberDialog.css'
 
 interface IAddNewMemberDialogState {
@@ -17,7 +17,11 @@ interface IAddNewMemberDialogState {
     invitationLink?: string
 }
 
-export default class AddNewMemberDialog extends React.Component {
+interface IAddNewMemberDialogProps {
+    getMembers: () => void
+}
+
+export default class AddNewMemberDialog extends React.Component<IAddNewMemberDialogProps, IAddNewMemberDialogState> {
     state: IAddNewMemberDialogState = {
         isOpen: false,
         emails: '',
@@ -26,33 +30,35 @@ export default class AddNewMemberDialog extends React.Component {
     }
 
     handleOpen = () => {
-        this.setState({isOpen: true})
+        this.setState({ isOpen: true })
     };
 
     handleClose = () => {
-        this.setState({isOpen: false, emails: '', isEmailsEmptyError: false})
+        this.setState({ isOpen: false, emails: '', isEmailsEmptyError: false })
     };
 
     handleChange = (e: { target: { value: string; }; }) => {
-        this.setState({emails: e.target.value, isEmailsEmptyError: false});
+        this.setState({ emails: e.target.value, isEmailsEmptyError: false });
     }
 
     sendInvitation = () => {
         if (this.state.emails) {
-            fetch('/api', {
+            fetch('https://localhost:5000/Family/members', {
                 method: 'POST',
                 headers: {
                     'Accept': 'application/json',
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
+                    'Authorization': 'Bearer ' + localStorage.getItem("Token")
                 },
-                body: JSON.stringify({emails: this.state.emails})
+                body: JSON.stringify({ email: this.state.emails })
             })
                 .then(res => res.json())
                 .then((result) => {
                     this.handleClose();
+                    this.props.getMembers();
                 })
         } else {
-            this.setState({isEmailsEmptyError: true})
+            this.setState({ isEmailsEmptyError: true })
         }
     }
 
@@ -60,7 +66,7 @@ export default class AddNewMemberDialog extends React.Component {
         return (
             <>
                 <div className="addNewMemberBtn" onClick={this.handleOpen}>
-                    <Add sx={{fontSize: 28}}/>
+                    <Add sx={{ fontSize: 28 }} />
                     Add more
                 </div>
                 <Dialog open={this.state.isOpen} onClose={this.handleClose} fullWidth={true}>
@@ -101,7 +107,7 @@ export default class AddNewMemberDialog extends React.Component {
                                 onChange={this.handleChange}
                             />
                             <div className="copyIcon">
-                                <ContentCopy sx={{fontSize: 20}}/>
+                                <ContentCopy sx={{ fontSize: 20 }} />
                             </div>
                         </div>
                     </DialogContent>

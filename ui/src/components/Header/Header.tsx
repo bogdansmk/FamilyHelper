@@ -35,7 +35,7 @@ export default class Header extends React.Component<IHeader> {
             return (
                 <div className="rightPart">
                     <img className="userAvatar" src={avatar} alt="avatar"/>
-                    Joseph
+                    {localStorage?.getItem("UserName")}
                 </div>
             )
         }

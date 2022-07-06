@@ -2,7 +2,7 @@ import React from 'react';
 import { Navigate } from 'react-router-dom';
 import Header from "../components/Header/Header";
 import "./Login.css";
-import {Button, TextField} from "@mui/material";
+import { Button, TextField } from "@mui/material";
 
 
 interface ILoginPageState {
@@ -87,8 +87,13 @@ export default class LoginPage extends React.Component<ILoginPageState, ILoginPa
             }).then(
                 (result) => {
                     if (result.status == 200) {
-                        const bearer = result.json()
-                        this.setAuthorized();
+                        result.json().then(
+                            res => {
+                                localStorage.setItem("Token", res.token)
+                                localStorage.setItem("UserName", res.firstName)
+                                this.setAuthorized();
+                            }
+                        );
                     }
                     else {
                         alert("Я без понятия по какой причине Витя отправил на клиент не 200 статус, но ты не будешь авторизован.")
@@ -130,7 +135,7 @@ export default class LoginPage extends React.Component<ILoginPageState, ILoginPa
                                 disableElevation
                                 disabled={false}
                                 onClick={this.submit}
-                                style={{minWidth: 125}}
+                                style={{ minWidth: 125 }}
                             >
                                 Enter
                             </Button>
@@ -154,7 +159,7 @@ export default class LoginPage extends React.Component<ILoginPageState, ILoginPa
                             </div>
                         </div>
                     </div>
-                    {this.state.authSuccess && (<Navigate to="/Lists" replace={true} state />)}
+                    {this.state.authSuccess && (<Navigate to="my-family" replace={true} />)}
                 </div>
             </>
         );
