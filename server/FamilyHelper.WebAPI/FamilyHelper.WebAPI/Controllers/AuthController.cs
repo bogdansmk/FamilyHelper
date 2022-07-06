@@ -11,12 +11,10 @@ using Microsoft.EntityFrameworkCore;
 
 namespace FamilyHelper.WebAPI.Controllers
 {
-    [Route("api/auth")]
     public class AuthController : Controller
     {
         private readonly AppDbContext _context;
         private readonly UserManager<AppUser> _userManager;
-        private readonly SignInManager<AppUser> _signInManager;
         private readonly ITokenService _tokenService;
         private readonly IConfiguration _configuration;
         private readonly IMapper _mapper;
@@ -25,15 +23,13 @@ namespace FamilyHelper.WebAPI.Controllers
             ITokenService tokenService,
             IConfiguration configuration,
             IMapper mapper,
-            AppDbContext context,
-            SignInManager<AppUser> signInManager)
+            AppDbContext context)
         {
             _userManager = userManager;
             _tokenService = tokenService;
             _configuration = configuration;
             _mapper = mapper;
             _context = context;
-            _signInManager = signInManager;
         }
 
         [AllowAnonymous]
@@ -46,16 +42,15 @@ namespace FamilyHelper.WebAPI.Controllers
                 return BadRequest();
             }
 
-            var result = await _signInManager.PasswordSignInAsync(loginModel.Email, loginModel.Password, true, false);
-
-            if (result.Succeeded)
+            var user = await _context.Users.FirstOrDefaultAsync(u => u.Email == loginModel.Email);
+            if (user == null)
             {
-                var user = await _context.Users.FirstOrDefaultAsync(u => u.Email == loginModel.Email);
-                if (user == null)
-                {
-                    return NotFound();
-                }
+                return NotFound();
+            }
 
+            var result = await _userManager.CheckPasswordAsync(_mapper.Map<AppUser>(user), loginModel.Password);
+            if (result)
+            {
                 var token = await _tokenService
                     .BuildTokenAsync(_configuration["Jwt:Key"].ToString(),
                         _configuration["Jwt:Issuer"].ToString(),

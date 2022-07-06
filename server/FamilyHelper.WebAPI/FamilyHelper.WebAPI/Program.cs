@@ -3,12 +3,8 @@ using FamilyHelper.Persistence.Entities;
 using FamilyHelper.Persistence.Mapping;
 using FamilyHelper.Services;
 using FamilyHelper.Services.Abstractions;
-using FamilyHelper.WebAPI.Auth;
-using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
@@ -31,18 +27,10 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             ValidateAudience = true,
             ValidateIssuerSigningKey = true,
             ValidIssuer = builder.Configuration["Jwt:Issuer"],
-            ValidAudience = builder.Configuration["Jwt:Audience"],
+            ValidAudience = builder.Configuration["Jwt:Issuer"],
             IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"])),
         };
     });
-//.AddScheme<AuthenticationSchemeOptions, BasicAuthenticationHandler>("Bearer", null);
-
-//builder.Services.AddAuthorization(options =>
-//{
-//    options.FallbackPolicy = new AuthorizationPolicyBuilder()
-//        .RequireAuthenticatedUser()
-//        .Build();
-//});
 
 builder.Services.AddHttpContextAccessor();
 builder.Services.AddAutoMapper(typeof(DataProfile).Assembly);
@@ -65,9 +53,10 @@ builder.Services.AddIdentityCore<AppUser>(opts =>
             RequireNonAlphanumeric = false
         };
     })
+    .AddDefaultTokenProviders()
+    .AddRoles<IdentityRole<Guid>>()
     .AddEntityFrameworkStores<AppDbContext>()
-    .AddUserManager<UserManager<AppUser>>()
-    .AddSignInManager<SignInManager<AppUser>>();
+    .AddUserManager<UserManager<AppUser>>();
 
 builder.Services.AddScoped<ITokenService, TokenService>();
 
