@@ -7,6 +7,7 @@ import LoginPage from './Auth/Login';
 import RegistrationPage from './Auth/Register';
 import ListsPage from "./Lists/Lists";
 import MyFamilyPage from "./MyFamily/MyFamilyPage";
+import CalendarPage from "./Calendar/Calendar";
 
 const root = ReactDOM.createRoot(
     document.getElementById('root') as HTMLElement
@@ -18,6 +19,7 @@ root.render(
                 <Route path="/" element={<LoginPage />} />
                 <Route path="register" element={<RegistrationPage />} />
                 <Route path="my-family" element={<MyFamilyPage />} />
+                <Route path="calendar" element={<CalendarPage />} />
                 <Route path="lists" element={<ListsPage />} />
             </Routes>
         </BrowserRouter>
