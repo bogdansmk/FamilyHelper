@@ -182,7 +182,7 @@ export default class RegistrationPage extends React.Component<IRegistrationProps
                             </div>
                         </div>
                     </div>
-                    {this.state.registraionSuccess && (<Navigate to="my-family" replace={true} state />)}
+                    {this.state.registraionSuccess && (<Navigate to="/my-family" replace={true} />)}
                 </div>
             </>
         );

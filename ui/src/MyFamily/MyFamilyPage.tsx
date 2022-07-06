@@ -8,11 +8,11 @@ import Header from "../components/Header/Header";
 import LeftMenu from "../components/LeftMenu/LeftMenu";
 import { FHTab, FHTabPanel, FHTabs } from "../components/Tabs/Tabs";
 import FamilyMember from '../Models/FamilyMeber';
-import { MenuItems } from "../utils/constants";
+import { MenuItems, Users } from "../utils/constants";
 import memberAvatar from './../assets/joseph.png';
 import AddNewMemberDialog from "./AddNewMemberDialog/AddNewMemberDialog";
 import './MyFamilyPage.css';
-import UserCard from "./UserCard/UserCard";
+import UserCard, { IUser } from "./UserCard/UserCard";
 
 interface IMyFamilyState {
     activeTab: string;
@@ -102,6 +102,11 @@ export default class MyFamilyPage extends React.Component {
                 <div className="ourFamily">
                     <div className="ourFamilyTitle">Our family</div>
                     <div className="ourFamilyBody">
+                    {Users.map((user: IUser) => {
+                            return <UserCard
+                                {...user}
+                            />
+                        })}
                         {this.state.familyMembers?.map((user: FamilyMember) => {
                             return <UserCard
                                 name={user.userInfo?.firstName}

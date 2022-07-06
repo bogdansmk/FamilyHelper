@@ -51,16 +51,16 @@ export default class AddNewMemberDialog extends React.Component<IAddNewMemberDia
                     'Authorization': 'Bearer ' + localStorage.getItem("Token")
                 },
                 body: JSON.stringify({ email: this.state.emails })
-            })
-                .then(res => res.json())
-                .then((result) => {
-                    this.handleClose();
-                    this.props.getMembers();
-                })
+            }).then(res => {
+                this.handleClose();
+                this.props.getMembers();
+            }
+            )
         } else {
             this.setState({ isEmailsEmptyError: true })
         }
     }
+
 
     render() {
         return (
