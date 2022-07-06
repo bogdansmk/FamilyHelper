@@ -41,13 +41,14 @@ export default class AddNewListDialog extends React.Component<IAddNewListDialogP
 
     handleAddNewList = () => {
         if (this.state.listName) {
-            fetch('/api', {
+            fetch('https://localhost:5000/familylists', {
                 method: 'POST',
                 headers: {
                     'Accept': 'application/json',
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
+                    'Authorization': 'Bearer ' + localStorage.getItem("Token")
                 },
-                body: JSON.stringify({ listName: this.state.listName })
+                body: JSON.stringify({ name: this.state.listName })
             })
                 .then(res => res.json())
                 .then((result) => {

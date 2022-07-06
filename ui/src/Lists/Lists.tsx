@@ -31,14 +31,24 @@ export default class ListsPage extends React.Component<IListsPage> {
     }
 
     fetchLists() {
-        fetch('/api', {
+        fetch('https://localhost:5000/familylists', {
             method: 'GET',
             headers: {
                 'Accept': 'application/json',
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + localStorage.getItem("Token")
             }
-        }).then(res => res.json())
-            .then(result => this.setState({ lists: result }))
+        }).then(
+            (result) => {
+                if (result.status == 200) {
+                    result.json().then(
+                        lists => {
+                            this.setState({lists: lists});
+                        }
+                    );
+                }
+            }
+        )
     }
 
 
