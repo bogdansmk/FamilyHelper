@@ -67,7 +67,7 @@ namespace FamilyHelper.WebAPI.Controllers
                 .Include(f => f.FamilyLists)
                 .FirstOrDefaultAsync(f => f.FamilyId == familyId);
 
-            return Ok(family?.FamilyLists);
+            return Ok(family?.FamilyLists.OrderBy(list => list.DateCreated));
         }
     }
 }
