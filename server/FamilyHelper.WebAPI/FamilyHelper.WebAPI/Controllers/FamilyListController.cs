@@ -65,6 +65,7 @@ namespace FamilyHelper.WebAPI.Controllers
 
             var family = await _context.Families
                 .Include(f => f.FamilyLists)
+                .Include("FamilyLists.ListItems")
                 .FirstOrDefaultAsync(f => f.FamilyId == familyId);
 
             return Ok(family?.FamilyLists.OrderBy(list => list.DateCreated));
